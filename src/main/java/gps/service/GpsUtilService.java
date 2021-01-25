@@ -16,12 +16,20 @@ public class GpsUtilService {
     private Logger logger = LoggerFactory.getLogger(GpsUtilService.class);
     private final GpsUtil gpsUtil = new GpsUtil();
 
-
+    /**
+     * Get the user location of a user based on his UUID
+     * @param userId the UUID
+     * @return a VisitedLocation model
+     */
     public VisitedLocation getUserLocationGpsUtil(UUID userId) {
         logger.debug("getUserLocationGpsUtil");
         return gpsUtil.getUserLocation(userId);
     }
 
+    /**
+     * Get all the attractions in a form of a list of attractions
+     * @return a list of attractions
+     */
     public List<Attraction> getAttractionsGpsUtil() {
         logger.debug("getAttractionsGpsUtil");
         return gpsUtil.getAttractions();
