@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * GPS UTIL CONTROLLER USED AS A MICROSERVICE FOR THE MAIN APP TOUR-GUIDE
+ */
 @RestController
 public class GpsUtilController {
 
@@ -22,6 +25,12 @@ public class GpsUtilController {
     @Autowired
     GpsUtilService gpsUtilService;
 
+    /**
+     * HTML GET request that returns a visited location
+     * @param userId the UUID of the userId in a form of a string
+     * @return the Visited location model of a specific userId
+     * @throws UUIDException
+     */
     @GetMapping("/getUserLocation")
     public VisitedLocation getUserLocationServer(@RequestParam String userId) throws UUIDException {
         UUID userIdUUID = null;
@@ -34,6 +43,10 @@ public class GpsUtilController {
         return gpsUtilService.getUserLocationGpsUtil(userIdUUID);
     }
 
+    /**
+     * HTML GET request that returns a list of attractions
+     * @return a list of all attractions
+     */
     @GetMapping("/getAllAttractions")
     public List<Attraction> getAllAttractionsServer() {
         logger.debug("Start getAllAttractionsServer at /getAllAttractions");
